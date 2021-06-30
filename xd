@@ -1,0 +1,51 @@
+--made by lads
+--leech go away!!
+
+function findwat(folder, what)
+    for i, smth in pairs(folder:GetChildren()) do
+    if string.find(string.lower(tostring(smth)), string.lower(what)) then
+    return smth
+    end
+    end
+    end
+    
+    local plrs = findwat(game, "Players")
+    
+    print(plrs)
+    local settings = {}
+    settings.ESP = true
+    local lplr = plrs.LocalPlayer
+    while true do
+    if settings.ESP == true then
+    for b, plr in pairs(plrs:GetPlayers()) do
+    if plr.Name ~= lplr.Name and plr.Character and lplr.Team.Name ~= plr.Team.Name then
+    local spt = plr.Character:FindFirstChild("ESP")
+    --print("omg")
+    if plr.Character:FindFirstChildOfClass("Humanoid").Health ~= 0 and not spt then
+    for i, part in pairs(plr.Character:GetChildren()) do
+    if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+    local a = Instance.new("BoxHandleAdornment", part)
+    a.Color3 = Color3.new(0, 1, 0.164706)
+    a.Adornee = a.Parent
+    a.Transparency = 0.65
+    if a.Adornee.Name ~= "Head" then
+    a.Size = a.Adornee.Size
+    else
+    a.Size = Vector3.new(1,1,1)
+    end
+    delay(0, function()
+    a.AlwaysOnTop = true
+    wait(1)
+    a.ZIndex = 2
+    end)
+    a.Name = "Ur mom gay lol"
+    end
+    end
+    local spt = Instance.new("Folder", plr.Character)
+    spt.Name = "ESP"
+    end
+    end
+    end
+    end
+    wait(3)
+    end
